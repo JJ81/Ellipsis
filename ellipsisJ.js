@@ -8,15 +8,18 @@
  */
 
 (function ($) {
-	$.fn.textLimitj = function(options) {
+	$.fn.ellipsisJ = function(options) {
+
 		settings = {
-				"lineCheckerClass" : "checkTextModuler",
+				"lineCheckerClass" : null,
 				"limitedLineNumber" : 2,
 				"ellipsisType" : "..."
 		};
-		
+
 		if(options) $.extend(settings, options);
-		
+
+		if(settings.lineCheckerClass == null || $("." + settings.lineCheckerClass +"")[0] === undefined) throw "There\'s no lineCheckerClass or insert it correctly again";
+
 		tmpTextContainer = [],index = 0,
 		oneLineHeight = (function() {
 			return $("."+settings.lineCheckerClass+"").height();
